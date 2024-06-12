@@ -37,6 +37,8 @@ const Navbar = () => {
     dispatch(signOut()); // Dispatch the signOut action
   };
 
+  const isCoursePage = location.pathname.startsWith("/courses/");
+
   return (
     <nav className="bg-gray-800">
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -49,12 +51,17 @@ const Navbar = () => {
                   className="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white"
                   aria-current="page"
                 >
-                  {location.pathname === "/dashboard" ? (
-                    <Link to="/">Home</Link>
-                  ) : (
-                    "Dashboard"
-                  )}
+                  Dashboard
                 </Link>
+                {isCoursePage && (
+                  <Link
+                    to="/"
+                    className="rounded-md bg-gray-900 px-5 py-2 text-sm font-medium text-white"
+                    aria-current="page"
+                  >
+                    Home
+                  </Link>
+                )}
               </div>
             </div>
           </div>

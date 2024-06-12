@@ -4,10 +4,13 @@ import { ref, get, push, update } from "firebase/database";
 import { database } from "../firebaseConfig";
 import Syllabus from "./Syllabus";
 import Loading from "./Loading";
+import Snackbar from "@mui/material/Snackbar";
 
 const CourseDetails = ({ user }) => {
   const { id } = useParams(); // Get course ID from URL params
   const [course, setCourse] = useState(null);
+  const [openSnackbar, setOpenSnackbar] = useState(false);
+  const [successSnackbar, setSuccessSnackbar] = useState(false);
 
   useEffect(() => {
     const courseRef = ref(database, `courses/${id}`);
@@ -30,40 +33,59 @@ const CourseDetails = ({ user }) => {
 
   const enrollCourse = () => {
     const studentCourseRef = ref(database, `studentCourses/${course.id}`);
-    // Push the course to studentCourses
-    push(studentCourseRef, course)
-      .then(() => {
-        console.log("Course added to studentCourses successfully!");
+
+    // Check if the course is already enrolled
+    get(studentCourseRef)
+      .then((snapshot) => {
+        if (snapshot.exists()) {
+          // Course already added, show snackbar
+          setOpenSnackbar(true);
+        } else {
+          // Course not added, proceed with enrollment
+          push(studentCourseRef, course)
+            .then(() => {
+              console.log("Course added to studentCourses successfully!");
+              setSuccessSnackbar(true); // Show success snackbar
+            })
+            .catch((error) => {
+              console.error("Error adding course to studentCourses: ", error);
+            });
+
+          // Initialize course.Students if it's not already initialized
+          const updatedStudents = course.Students || {};
+
+          // Ensure user.displayName is not undefined before using it
+          const userName = user.displayName || "Unknown";
+
+          // Update the course with enrolled student's information
+          update(ref(database, `courses/${id}`), {
+            Students: {
+              ...updatedStudents,
+              [user.uid]: {
+                id: user.uid,
+                name: userName,
+                email: user.email,
+              },
+            },
+          })
+            .then(() => {
+              console.log("Course enrolled successfully!");
+              // You can add any additional logic here, such as displaying a success message
+            })
+            .catch((error) => {
+              console.error("Error enrolling in course: ", error);
+              // Handle any errors, such as displaying an error message to the user
+            });
+        }
       })
       .catch((error) => {
-        console.error("Error adding course to studentCourses: ", error);
+        console.error("Error checking studentCourses: ", error);
       });
+  };
 
-    // Initialize course.Students if it's not already initialized
-    const updatedStudents = course.Students || {};
-
-    // Ensure user.displayName is not undefined before using it
-    const userName = user.displayName || "Unknown";
-
-    // Update the course with enrolled student's information
-    update(ref(database, `courses/${id}`), {
-      Students: {
-        ...updatedStudents,
-        [user.uid]: {
-          id: user.uid,
-          name: userName,
-          email: user.email,
-        },
-      },
-    })
-      .then(() => {
-        console.log("Course enrolled successfully!");
-        // You can add any additional logic here, such as displaying a success message
-      })
-      .catch((error) => {
-        console.error("Error enrolling in course: ", error);
-        // Handle any errors, such as displaying an error message to the user
-      });
+  const handleCloseSnackbar = () => {
+    setOpenSnackbar(false);
+    setSuccessSnackbar(false);
   };
 
   return (
@@ -71,7 +93,7 @@ const CourseDetails = ({ user }) => {
       <div className="hidden lg:block">
         <div className="mt-20 flex justify-between mx-10">
           <div className="ml-10">
-            <p className="text-5xl font-bold tracking-tight text-gray-900  my-4">
+            <p className="text-5xl font-bold tracking-tight text-gray-900 my-4">
               {course.courseName}
             </p>
             <p className="text-3xl ml-1">Instructor : {course.instructor}</p>
@@ -207,6 +229,20 @@ const CourseDetails = ({ user }) => {
           </div>
         </div>
       </div>
+      <Snackbar
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+        open={openSnackbar}
+        onClose={handleCloseSnackbar}
+        message="Course is already added"
+        key={"topcenter"}
+      />
+      <Snackbar
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+        open={successSnackbar}
+        onClose={handleCloseSnackbar}
+        message="Course added successfully"
+        key={"topcenter-success"}
+      />
     </>
   );
 };

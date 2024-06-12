@@ -73,13 +73,13 @@ const CourseList = () => {
         />
       </div>
       <div className="flex justify-center">
-        <div className="w-full max-w-4xl">
+        <div className="w-full max-w-4xl md:mx-10">
           {filteredCourses.map((course) => (
             <div key={course.id} className="my-3">
               <button onClick={() => dispatch(setSelectedCourseId(course.id))}>
                 <Link
                   to={`/courses/${course.id}`}
-                  className="block mx-6 p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+                  className="block md:w-[40rem]  lg:w-[50rem]  mx-6 p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
                 >
                   <div className="md:flex">
                     <div>
