@@ -4,13 +4,13 @@ import { getAuth } from "firebase/auth";
 import { getDatabase } from "firebase/database";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCP3IJkPfOUSu7zaLtopoDmXiqgbZ3HA4s",
-  authDomain: "studentcourse-cf482.firebaseapp.com",
-  databaseURL: "https://studentcourse-cf482-default-rtdb.firebaseio.com",
-  projectId: "studentcourse-cf482",
-  storageBucket: "studentcourse-cf482.appspot.com",
-  messagingSenderId: "504332535235",
-  appId: "1:504332535235:web:f3ee2381875b5c4e636976",
+  apiKey: process.env.REACT_APP_APIKEY,
+  authDomain: process.env.REACT_APP_AUTHDOAMIN,
+  databaseURL: process.env.REACT_APP_DATABASEURL,
+  projectId: process.env.REACT_APP_PROJECTID,
+  storageBucket: process.env.REACT_APP_STORAGEBUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGESENDERID,
+  appId: process.env.REACT_APP_APPID,
 };
 
 // Initialize Firebase
