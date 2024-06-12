@@ -9,6 +9,7 @@ import ProgressTracker from "./component/ProgressTracker";
 import Navbar from "./component/Navbar";
 import { auth } from "./firebaseConfig";
 import { signIn } from "./action";
+import { seedCourses } from "./seedCourses";
 
 function App() {
   const user = useSelector((state) => state.auth.user);
