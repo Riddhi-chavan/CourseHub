@@ -1,0 +1,302 @@
+[
+  {
+    "id": "course_001",
+    "courseName": "Introduction to Programming",
+    "instructor": "Jane Doe",
+    "description": "Learn the basics of programming using Python. This course covers fundamental programming concepts and techniques.",
+    "enrollmentStatus": "Open",
+    "thumbnail": "https://images.manning.com/book/9/e4b849b-c795-48e9-b053-f2eae4165ae2/Bell-Python_hi-res.png",
+    "duration": "8 weeks",
+    "schedule": "Mon & Wed, 10:00 AM - 12:00 PM",
+    "location": "Room 101, Building A",
+    "ProgressStatus" : "Not started",
+    "due_date": "2024-06-30",
+    "prerequisites": ["None"],
+    "syllabus": [
+      {
+        "week": 1,
+        "topic": "Introduction to Python",
+        "content": "Overview of Python, setting up your development environment."
+      },
+      {
+        "week": 2,
+        "topic": "Data Types and Variables",
+        "content": "Learn about data types and variables in Python."
+      },
+      {
+        "week": 3,
+        "topic": "Control Structures",
+        "content": "Learn about control structures like if-else and loops."
+      },
+      {
+        "week": 4,
+        "topic": "Functions",
+        "content": "Understand how to define and use functions."
+      },
+      {
+        "week": 5,
+        "topic": "Lists and Dictionaries",
+        "content": "Learn about lists and dictionaries."
+      },
+      {
+        "week": 6,
+        "topic": "File I/O",
+        "content": "Learn how to read from and write to files."
+      },
+      {
+        "week": 7,
+        "topic": "Error Handling",
+        "content": "Learn how to handle errors in Python."
+      },
+      {
+        "week": 8,
+        "topic": "Final Project",
+        "content": "Work on a final project to demonstrate your skills."
+      }
+    ]
+  },
+  {
+    "id": "course_002",
+    "courseName": "Advanced Data Structures",
+    "instructor": "John Smith",
+    "description": "Dive deep into advanced data structures and algorithms to enhance your problem-solving skills.",
+    "enrollmentStatus": "In Progress",
+    "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzUz_nu69QV_ULAVcivGK8WCUjh4cER3VnFQ&s",
+    "duration": "10 weeks",
+    "schedule": "Tue & Thu, 2:00 PM - 4:00 PM",
+    "location": "Room 202, Building B",
+    "ProgressStatus" : "Not started",
+    "due_date" : "17-08-24",
+    "prerequisites": ["Introduction to Programming"],
+    "syllabus": [
+      {
+        "week": 1,
+        "topic": "Review of Basic Data Structures",
+        "content": "Review basic data structures like arrays and linked lists."
+      },
+      {
+        "week": 2,
+        "topic": "Trees",
+        "content": "Learn about different types of trees."
+      },
+      {
+        "week": 3,
+        "topic": "Graphs",
+        "content": "Understand graph algorithms and their applications."
+      },
+      {
+        "week": 4,
+        "topic": "Hash Tables",
+        "content": "Learn about hash tables and their use cases."
+      },
+      {
+        "week": 5,
+        "topic": "Heaps",
+        "content": "Understand how heaps work and their applications."
+      },
+      {
+        "week": 6,
+        "topic": "Advanced Sorting Algorithms",
+        "content": "Learn about advanced sorting techniques."
+      },
+      {
+        "week": 7,
+        "topic": "Dynamic Programming",
+        "content": "Understand the concepts of dynamic programming."
+      },
+      {
+        "week": 8,
+        "topic": "Greedy Algorithms",
+        "content": "Learn about greedy algorithms and their applications."
+      },
+      {
+        "week": 9,
+        "topic": "Advanced Topics",
+        "content": "Explore advanced topics in data structures."
+      },
+      {
+        "week": 10,
+        "topic": "Final Project",
+        "content": "Work on a final project to demonstrate your skills."
+      }
+    ]
+  },
+  {
+    "id": "course_003",
+    "courseName": "Machine Learning Basics",
+    "instructor": "Alice Johnson",
+    "description": "An introductory course on machine learning covering key concepts and techniques used in the field.",
+    "enrollmentStatus": "Open",
+    "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_ZzJwyjPI68HwKtXU-xn0dsK3adDCcW2e1F0VETsV_esKYgmoZ5PHV8_4wg8YKUh9yWA&usqp=CAU",
+    "duration": "12 weeks",
+    "schedule": "Mon, Wed & Fri, 1:00 PM - 3:00 PM",
+    "location": "Room 303, Building C",
+    "ProgressStatus" : "Not started",
+    "due_date" : "05-11-24",
+    "prerequisites": ["Introduction to Programming", "Statistics"],
+    "syllabus": [
+      {
+        "week": 1,
+        "topic": "Introduction to Machine Learning",
+        "content": "Overview of machine learning concepts."
+      },
+      {
+        "week": 2,
+        "topic": "Supervised Learning",
+        "content": "Learn about supervised learning techniques."
+      },
+      {
+        "week": 3,
+        "topic": "Regression Algorithms",
+        "content": "Understand various regression algorithms."
+      },
+      {
+        "week": 4,
+        "topic": "Classification Algorithms",
+        "content": "Learn about different classification algorithms."
+      },
+      {
+        "week": 5,
+        "topic": "Unsupervised Learning",
+        "content": "Explore unsupervised learning techniques."
+      },
+      {
+        "week": 6,
+        "topic": "Clustering Algorithms",
+        "content": "Understand clustering algorithms and their applications."
+      },
+      {
+        "week": 7,
+        "topic": "Dimensionality Reduction",
+        "content": "Learn about techniques for reducing dimensionality."
+      },
+      {
+        "week": 8,
+        "topic": "Model Evaluation",
+        "content": "Understand how to evaluate machine learning models."
+      },
+      {
+        "week": 9,
+        "topic": "Neural Networks",
+        "content": "Learn about the basics of neural networks."
+      },
+      {
+        "week": 10,
+        "topic": "Deep Learning Basics",
+        "content": "Understand the fundamentals of deep learning."
+      },
+      {
+        "week": 11,
+        "topic": "Ensemble Methods",
+        "content": "Learn about ensemble methods in machine learning."
+      },
+      {
+        "week": 12,
+        "topic": "Final Project",
+        "content": "Work on a final project to demonstrate your skills."
+      }
+    ]
+  },
+  {
+    "id": "course_004",
+    "courseName": "Web Development",
+    "instructor": "Bob Williams",
+    "description": "Learn how to build modern, responsive websites using HTML, CSS, and JavaScript.",
+    "enrollmentStatus": "Closed",
+    "thumbnail": "https://media.licdn.com/dms/image/D5612AQH8E4_OusSiIw/article-cover_image-shrink_720_1280/0/1666093138999?e=2147483647&v=beta&t=m832R07KC5sh0pQeTRMIgNVp9V2LJ8d9VYZnDeYLBBE",
+    "duration": "6 weeks",
+    "schedule": "Sat & Sun, 10:00 AM - 1:00 PM",
+    "location": "Room 404, Building D",
+    "ProgressStatus" : "Not started",
+    "due_date" : "22-07-24",
+    "prerequisites": ["Introduction to Programming"],
+    "syllabus": [
+      {
+        "week": 1,
+        "topic": "HTML Basics",
+        "content": "Learn the basics of HTML."
+      },
+      {
+        "week": 2,
+        "topic": "CSS Basics",
+        "content": "Understand the basics of CSS."
+      },
+      {
+        "week": 3,
+        "topic": "JavaScript Basics",
+        "content": "Learn the fundamentals of JavaScript."
+      },
+      {
+        "week": 4,
+        "topic": "Responsive Design",
+        "content": "Learn how to create responsive web designs."
+      },
+      {
+        "week": 5,
+        "topic": "Advanced JavaScript",
+        "content": "Explore advanced JavaScript topics."
+      },
+      {
+        "week": 6,
+        "topic": "Final Project",
+        "content": "Work on a final project to demonstrate your skills."
+      }
+    ]
+  },
+  {
+    "id": "course_005",
+    "courseName": "Database Systems",
+    "instructor": "Emma Brown",
+    "description": "A comprehensive course on database systems, covering design, implementation, and management of databases.",
+    "enrollmentStatus": "Open",
+    "thumbnail": "https://emarketing.cengageasia.com/cover/cover/9780357673034.jpg",
+    "duration": "8 weeks",
+    "schedule": "Tue & Thu, 11:00 AM - 1:00 PM",
+    "location": "Room 505, Building E",
+    "due_date" : "08-08-24",
+    "ProgressStatus" : "Not started",
+    "prerequisites": ["Introduction to Programming"],
+    "syllabus": [
+      {
+        "week": 1,
+        "topic": "Introduction to Databases",
+        "content": "Overview of database concepts."
+      },
+      {
+        "week": 2,
+        "topic": "Relational Model",
+        "content": "Understand the relational database model."
+      },
+      {
+        "week": 3,
+        "topic": "SQL",
+        "content": "Learn SQL for managing databases."
+      },
+      {
+        "week": 4,
+        "topic": "Database Design",
+        "content": "Understand principles of database design."
+      },
+      {
+        "week": 5,
+        "topic": "Indexing and Hashing",
+        "content": "Learn about indexing and hashing techniques."
+      },
+      {
+        "week": 6,
+        "topic": "Transactions and Concurrency",
+        "content": "Understand transaction management and concurrency control."
+      },
+      {
+        "week": 7,
+        "topic": "Distributed Databases",
+        "content": "Learn about distributed database systems."
+      },
+      {
+        "week": 8,
+        "topic": "Final Project",
+        "content": "Work on a final project to demonstrate your skills."
+      }
+    ]
+  }
+]
