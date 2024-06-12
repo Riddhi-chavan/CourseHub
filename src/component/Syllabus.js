@@ -11,16 +11,13 @@ const Syllabus = ({ syllabus }) => {
     dispatch(setActiveIndex(activeIndexRedux === index ? null : index));
   };
 
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (
-        accordionRef.current &&
-        !accordionRef.current.contains(event.target)
-      ) {
-        dispatch(setActiveIndex(null));
-      }
-    };
+  const handleClickOutside = (event) => {
+    if (accordionRef.current && !accordionRef.current.contains(event.target)) {
+      dispatch(setActiveIndex(null));
+    }
+  };
 
+  useEffect(() => {
     if (activeIndexRedux !== null) {
       document.addEventListener("click", handleClickOutside);
     } else {
@@ -30,7 +27,7 @@ const Syllabus = ({ syllabus }) => {
     return () => {
       document.removeEventListener("click", handleClickOutside);
     };
-  }, [activeIndexRedux]);
+  }, [activeIndexRedux, dispatch]);
 
   return (
     <div
