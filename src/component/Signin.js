@@ -1,13 +1,20 @@
 import React from "react";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { useDispatch } from "react-redux"; // Import useDispatch hook
+import { signIn } from "../action"; // Import signInAction
 import { auth } from "../firebaseConfig";
 
-const Signin = ({ setLogin }) => {
-  const handleGoogle = async (e) => {
+const Signin = () => {
+  const dispatch = useDispatch(); // Initialize useDispatch hook
+
+  const handleGoogle = async () => {
     try {
       const provider = new GoogleAuthProvider();
-      await signInWithPopup(auth, provider);
-      setLogin(true); // Update the login state
+      const result = await signInWithPopup(auth, provider);
+      const user = result.user;
+
+      // Dispatch signInAction to update the Redux store
+      dispatch(signIn(user));
     } catch (error) {
       console.error("Error during sign-in:", error);
     }

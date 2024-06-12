@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { ref, get, push, update } from "firebase/database";
 import { database } from "../firebaseConfig";
 import Syllabus from "./Syllabus";
+import Loading from "./Loading";
 
 const CourseDetails = ({ user }) => {
   const { id } = useParams(); // Get course ID from URL params
@@ -24,7 +25,7 @@ const CourseDetails = ({ user }) => {
   }, [id]);
 
   if (!course) {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
 
   const enrollCourse = () => {
@@ -38,13 +39,19 @@ const CourseDetails = ({ user }) => {
         console.error("Error adding course to studentCourses: ", error);
       });
 
+    // Initialize course.Students if it's not already initialized
+    const updatedStudents = course.Students || {};
+
+    // Ensure user.displayName is not undefined before using it
+    const userName = user.displayName || "Unknown";
+
     // Update the course with enrolled student's information
     update(ref(database, `courses/${id}`), {
       Students: {
-        ...course.Students,
+        ...updatedStudents,
         [user.uid]: {
           id: user.uid,
-          name: user.displayName,
+          name: userName,
           email: user.email,
         },
       },
@@ -102,7 +109,7 @@ const CourseDetails = ({ user }) => {
             </div>
           </div>
           <div>
-            <img src={course.thumbnail} className="w-[30rem]" />
+            <img src={course.thumbnail} alt="" className="w-[30rem]" />
           </div>
         </div>
       </div>

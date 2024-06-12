@@ -1,10 +1,15 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux"; // Import Redux hooks
+import { signOut } from "../action"; // Import the signOut action creator
 
-const Navbar = ({ user, handleSignOut, login }) => {
+const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef(null);
   const location = useLocation();
+  const dispatch = useDispatch(); // Get the dispatch function
+  const user = useSelector((state) => state.auth.user); // Get the user from Redux state
+  const login = useSelector((state) => state.auth.login); // Get the login status from Redux state
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -27,6 +32,10 @@ const Navbar = ({ user, handleSignOut, login }) => {
       document.removeEventListener("click", handleClickOutside);
     };
   }, [isMenuOpen]);
+
+  const handleSignOut = () => {
+    dispatch(signOut()); // Dispatch the signOut action
+  };
 
   return (
     <nav className="bg-gray-800">

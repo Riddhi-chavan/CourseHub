@@ -1,54 +1,59 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  setSelectedCourseId,
+  setCourses,
+  setFilteredCourses,
+  setLoading,
+  setError,
+  setSearchQuery,
+  setSearchField,
+} from "../action"; // Correct import path
 import { ref, onValue } from "firebase/database";
 import { database } from "../firebaseConfig";
 import { Link } from "react-router-dom";
 import Search from "./Search";
 import Loading from "./Loading";
 
-const CourseList = ({ setSelectedCourseId, user }) => {
-  const [courses, setCourses] = useState([]);
-  const [filteredCourses, setFilteredCourses] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [searchQuery, setSearchQuery] = useState("");
-  const [searchField, setSearchField] = useState(""); // Default to an empty string
+const CourseList = () => {
+  const dispatch = useDispatch();
+  const { courses, filteredCourses, loading, error, searchQuery, searchField } =
+    useSelector((state) => state.course);
 
   useEffect(() => {
     const coursesRef = ref(database, "courses/");
-    // Fetch courses from the database
     onValue(
       coursesRef,
       (snapshot) => {
         const coursesData = snapshot.val();
         if (coursesData) {
-          // Convert coursesData object to array
           const coursesArray = Object.values(coursesData);
-          setCourses(coursesArray);
-          setFilteredCourses(coursesArray);
+          dispatch(setCourses(coursesArray));
+          dispatch(setFilteredCourses(coursesArray));
         } else {
-          setCourses([]);
-          setFilteredCourses([]);
+          dispatch(setCourses([]));
+          dispatch(setFilteredCourses([]));
         }
-        setLoading(false);
-        setError(null);
+        dispatch(setLoading(false));
+        dispatch(setError(null));
       },
       (error) => {
-        setError(error.message);
-        setLoading(false);
+        dispatch(setError(error.message));
+        dispatch(setLoading(false));
       }
     );
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     if (searchField === "") {
-      setFilteredCourses(courses);
+      dispatch(setFilteredCourses(courses));
     } else {
       const filtered = courses.filter((course) =>
         course[searchField].toLowerCase().includes(searchQuery.toLowerCase())
       );
-      setFilteredCourses(filtered);
+      dispatch(setFilteredCourses(filtered));
     }
-  }, [searchQuery, searchField, courses]);
+  }, [searchQuery, searchField, courses, dispatch]);
 
   if (loading) {
     return <Loading />;
@@ -62,8 +67,8 @@ const CourseList = ({ setSelectedCourseId, user }) => {
     <>
       <div className="flex justify-end mr-2 md:mr-10">
         <Search
-          setSearchQuery={setSearchQuery}
-          setSearchField={setSearchField}
+          setSearchQuery={(query) => dispatch(setSearchQuery(query))}
+          setSearchField={(field) => dispatch(setSearchField(field))}
           searchField={searchField}
         />
       </div>
@@ -71,7 +76,7 @@ const CourseList = ({ setSelectedCourseId, user }) => {
         <div className="w-full max-w-4xl">
           {filteredCourses.map((course) => (
             <div key={course.id} className="my-3">
-              <button onClick={() => setSelectedCourseId(course.id)}>
+              <button onClick={() => dispatch(setSelectedCourseId(course.id))}>
                 <Link
                   to={`/courses/${course.id}`}
                   className="block mx-6 p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"

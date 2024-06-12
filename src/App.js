@@ -1,82 +1,54 @@
-import { useEffect, useState } from "react";
-import "./App.css";
-import CourseList from "./component/CourseList";
-import Navbar from "./component/Navbar";
+import React, { useEffect } from "react";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 import Signin from "./component/Signin";
-import { signOut } from "firebase/auth";
-import { auth } from "./firebaseConfig";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import CourseList from "./component/CourseList";
 import CourseDetails from "./component/CourseDetails";
-import { seedCourses } from "./seedCourses";
 import Dashboard from "./component/Dashboard";
 import ProgressTracker from "./component/ProgressTracker";
+import Navbar from "./component/Navbar";
+import { auth } from "./firebaseConfig";
+import { signIn } from "./action";
 
 function App() {
-  const [login, setLogin] = useState(false);
-  const [user, setUser] = useState(null);
-  const [selectedCourseId, setSelectedCourseId] = useState(null);
+  const user = useSelector((state) => state.auth.user);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
-        setUser(user);
-        setLogin(true);
-      } else {
-        setUser(null);
-        setLogin(false);
+        dispatch(signIn(user));
       }
     });
     return () => unsubscribe();
-  }, []);
-
-  const handleSignOut = async () => {
-    try {
-      await signOut(auth);
-      setLogin(false);
-    } catch (error) {
-      console.error("Error signing out:", error);
-    }
-  };
-
-  // const handleButtonClick = () => {
-  //   // Call the seedCourses function when the button is clicked
-  //   seedCourses()
-  //     .then(() => {
-  //       console.log("Courses added successfully!");
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error adding courses: ", error);
-  //     });
-  // };
+  }, [dispatch]);
 
   return (
     <BrowserRouter>
       <div>
-        <Navbar user={user} handleSignOut={handleSignOut} login={login} />
-        {login ? (
-          <Routes>
-            <Route path="/dashboard" element={<Dashboard user={user} />} />
-            <Route
-              path="/dashboard/progress-tracker"
-              element={<ProgressTracker />}
-            />
-            <Route
-              exact
-              path="/"
-              element={<CourseList setSelectedCourseId={setSelectedCourseId} />}
-            />
-            {selectedCourseId && (
+        <Navbar />
+        <Routes>
+          {user ? (
+            <>
+              <Route path="/dashboard" element={<Dashboard user={user} />} />
+              <Route
+                path="/dashboard/progress-tracker"
+                element={<ProgressTracker />}
+              />
+              <Route path="/" element={<CourseList />} />
               <Route
                 path="/courses/:id"
                 element={<CourseDetails user={user} />}
               />
-            )}
-          </Routes>
-        ) : (
-          <Signin setLogin={setLogin} />
-        )}
+            </>
+          ) : (
+            <Route path="/" element={<Signin />} />
+          )}
+          {user && (
+            <Route path="/signin" element={<Navigate to="/" replace />} />
+          )}
+        </Routes>
       </div>
-      {/* <button onClick={handleButtonClick}>add</button> */}
     </BrowserRouter>
   );
 }
