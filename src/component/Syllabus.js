@@ -30,7 +30,7 @@ const Syllabus = ({ syllabus }) => {
     return () => {
       document.removeEventListener("click", handleClickOutside);
     };
-  }, [activeIndexRedux]); // Include activeIndexRedux as a dependency
+  }, [activeIndexRedux]);
 
   return (
     <div
