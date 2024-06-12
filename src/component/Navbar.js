@@ -82,7 +82,7 @@ const Navbar = () => {
                   <img
                     className="h-8 w-8 rounded-full"
                     src={user?.photoURL}
-                    alt="user Image"
+                    alt={user?.displayName || "User Image"}
                   />
                 </button>
               </div>

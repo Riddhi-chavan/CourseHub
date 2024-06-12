@@ -27,7 +27,7 @@ const Syllabus = ({ syllabus }) => {
     return () => {
       document.removeEventListener("click", handleClickOutside);
     };
-  }, [activeIndexRedux]);
+  }, [activeIndexRedux, handleClickOutside]);
 
   return (
     <div
