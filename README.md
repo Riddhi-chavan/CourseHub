@@ -39,7 +39,7 @@ Course Management System is a platform designed for students to view and enroll 
 
 ## Demo
 
-- [https://github.com/Riddhi-chavan/CourseHub/assets/130183432/f80f617b-c9f1-49b8-80e0-0ea06b94da45]
+https://github.com/Riddhi-chavan/CourseHub/assets/130183432/f80f617b-c9f1-49b8-80e0-0ea06b94da45
 
 ## Live Demo
 
