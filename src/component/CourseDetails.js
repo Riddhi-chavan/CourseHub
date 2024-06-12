@@ -131,7 +131,11 @@ const CourseDetails = ({ user }) => {
             </div>
           </div>
           <div>
-            <img src={course.thumbnail} alt="" className="w-[30rem]" />
+            <img
+              src={course.thumbnail}
+              alt={course.courseName}
+              className="w-[30rem]"
+            />
           </div>
         </div>
       </div>
@@ -141,7 +145,11 @@ const CourseDetails = ({ user }) => {
             {course.courseName}
           </p>
           <div className="flex justify-center">
-            <img src={course.thumbnail} className="w-[20rem]" />
+            <img
+              src={course.thumbnail}
+              alt={course.courseName}
+              className="w-[20rem]"
+            />
           </div>
           <p className="text-2xl text-center mt-2 ml-1">
             Instructor : {course.instructor}
@@ -184,7 +192,11 @@ const CourseDetails = ({ user }) => {
         <div className="mx-4 mt-6">
           <div className="">
             <div className="flex justify-center">
-              <img src={course.thumbnail} className="w-[20rem]" />
+              <img
+                src={course.thumbnail}
+                alt={course.courseName}
+                className="w-[20rem]"
+              />
             </div>
             <div className="mx-10">
               <p className="text-4xl font-bold tracking-tight text-gray-900  my-4">

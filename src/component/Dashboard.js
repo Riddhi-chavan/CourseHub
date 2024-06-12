@@ -191,7 +191,7 @@ const Dashboard = ({ user }) => {
             <div>
               {courses.length === 0 ? (
                 <div className="my-3 flex justify-center">
-                  <img src="/empty.png" />
+                  <img src="/empty.png" alt="empty" />
                 </div>
               ) : (
                 <div className="grid grid-cols-1 gap-4 ">
@@ -249,7 +249,11 @@ const Dashboard = ({ user }) => {
                   : "Student Dashboard"}
               </div>
               <div className="flex justify-center ">
-                <img src="/dashboard.png" className="h-[15rem] pt-10" />
+                <img
+                  src="/dashboard.png"
+                  alt="dashboard"
+                  className="h-[15rem] pt-10"
+                />
               </div>
               <div className="flex justify-center">
                 <div className="w-1/2 text-center my-10">

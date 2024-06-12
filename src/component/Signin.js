@@ -47,7 +47,12 @@ const Signin = () => {
                   <span className="sr-only">Close popup</span>
                 </button>
                 <div className="space-y-4">
-                  <img src="/dashboard.png" loading="lazy" className="w-10" />
+                  <img
+                    src="/dashboard.png"
+                    alt="dashboard"
+                    loading="lazy"
+                    className="w-10"
+                  />
                   <h2 className="mb-8 text-2xl text-cyan-900 dark:text-white font-bold">
                     Sign-in to unlock the <br />
                     best of CourseHub.
