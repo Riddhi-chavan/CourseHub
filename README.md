@@ -1,70 +1,132 @@
-# Getting Started with Create React App
+# Course Management System
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+Course Management System is a platform designed for students to view and enroll in courses. The system provides a detailed view of each course, including the syllabus and enrollment status. It also includes student authentication via Google, a personalized student dashboard, and a progress tracker. The application is built using React.js, Redux, and Firebase for the backend, ensuring a responsive and seamless user experience.
 
-In the project directory, you can run:
+## Table of Contents
 
-### `npm start`
+- [Overview](#overview)
+- [Features](#features)
+- [Screenshots](#screenshots)
+- [Demo](#demo)
+- [Live Demo](#live-demo)
+- [Tech Stack](#tech-stack)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+    - [Clone Project](#clone-project)
+    - [Backend Setup](#backend-setup)
+    - [Frontend Setup](#frontend-setup)
+  - [Configuration](#configuration)
+- [Usage](#usage)
+- [Contact](#contact)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **User Authentication with Google**: Students can log in using their Google account.
+- **Course List and Details**: View a list of all courses and detailed information about each course, including the syllabus.
+- **Student Dashboard**: Personalized dashboard where students can view and manage their enrolled courses.
+- **Progress Tracker**: Allows students to track their progress in each course (start, in-progress, done).
+- **Responsive Design**: Fully responsive design that works efficiently on all devices.
 
-### `npm test`
+## Screenshots
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![Course List Screenshot](https://github.com/Riddhi-chavan/CourseHub/assets/130183432/63b46380-9a7d-4152-a364-8c7fe4b12459)
+![Course Details Screenshot](https://github.com/Riddhi-chavan/CourseHub/assets/130183432/f200b207-d62a-415d-948d-555ec6129238)
+![Student Dashboard Screenshot](https://github.com/Riddhi-chavan/CourseHub/assets/130183432/9413ebcc-c553-4447-93f2-ab952a22ece8)
+![Progress Tracker Screenshot](https://github.com/Riddhi-chavan/CourseHub/assets/130183432/b6a6bed5-9eef-47c3-b944-1e2d1f7098f7)
 
-### `npm run build`
+## Demo
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+https://github.com/Riddhi-chavan/CourseHub/assets/130183432/69dd888e-3f95-46f8-a62c-b34dc7eb0bbc
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Live Demo
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- [click here for live demo](https://soft-gumption-a980d3.netlify.app/)
 
-### `npm run eject`
+## Tech Stack
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- **Frontend**: React.js, Redux
+- **Backend**: Firebase
+- **State Management**: Redux
+- **Authentication**: Firebase Authentication (Google Auth)
+- **Styling**: CSS/Styled-components
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Getting Started
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Prerequisites
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- **Node.js**: Install Node.js from [here](https://nodejs.org/en)
+- **Firebase Account**: Set up a Firebase project [here](https://firebase.google.com)
 
-## Learn More
+### Installation
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+#### Clone Project
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+git clone https://github.com/your-username/course-management-system.git
+cd course-management-system
+```
+## Backend Setup
 
-### Code Splitting
+1. **Set up Firebase project**:
+   - Go to the [Firebase Console](https://console.firebase.google.com/), create a new project, and set up Firebase Authentication and Firestore Database.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+2. **Create a `.env` file in the root directory and add the following:**
 
-### Analyzing the Bundle Size
+   ```plaintext
+   REACT_APP_FIREBASE_API_KEY=your-firebase-api-key
+   REACT_APP_FIREBASE_AUTH_DOMAIN=your-firebase-auth-domain
+   REACT_APP_FIREBASE_PROJECT_ID=your-firebase-project-id
+   REACT_APP_FIREBASE_STORAGE_BUCKET=your-firebase-storage-bucket
+   REACT_APP_FIREBASE_MESSAGING_SENDER_ID=your-firebase-messaging-sender-id
+   REACT_APP_FIREBASE_APP_ID=your-firebase-app-id
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Frontend Setup
 
-### Making a Progressive Web App
+1. Install the dependencies:
+     ```bash
+     npm install
+    ```
+      
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+2. **Start the frontend server:**
+    ```bash
+    npm run dev
+    ```
 
-### Advanced Configuration
+    ### Tailwind CSS Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+1. **Install Tailwind CSS:**
+    ```bash
+    npm install -D tailwindcss@latest postcss@latest autoprefixer@latest
+    ```
 
-### Deployment
+2. **Generate Tailwind CSS configuration file:**
+    ```bash
+    npx tailwindcss init
+    ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+   3. **Update `tailwind.config.js` with your custom configuration if needed.**
 
-### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Configuration
+
+Ensure all necessary configurations, such as Firebase API keys, are correctly set up in the environment variables
+
+## Usage
+
+- Open [http://localhost:3000](http://localhost:3000) to view the app in the browser.
+- Log in using your Google account to access the student dashboard.
+
+- Browse through the list of courses, enroll in courses, and track your progress in the student dashboard.
+
+
+## Contact
+
+Email: riddhic164@gmail.com
+
+Project Link: [https://github.com/Riddhi-chavan/CourseHub](https://github.com/Riddhi-chavan/CourseHub)
+
+Thank you for checking out my project! If you have any suggestions or find issues, feel free to open an issue or submit a pull request. Your feedback is highly appreciated!
