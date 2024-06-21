@@ -9,6 +9,9 @@ import ProgressTracker from "./component/ProgressTracker";
 import Navbar from "./component/Navbar";
 import { auth } from "./firebaseConfig";
 import { signIn } from "./action";
+import Admin from "./component/AdminPage/Admin";
+import AdminRegister from "./component/AdminPage/AdminRegister";
+import AdminLogin from "./component/AdminPage/AdminLogin";
 
 function App() {
   const user = useSelector((state) => state.auth.user);
@@ -47,6 +50,9 @@ function App() {
           {user && (
             <Route path="/signin" element={<Navigate to="/" replace />} />
           )}
+          <Route path="/admin" element={<Admin />} />
+          <Route path="/adminregister" element={<AdminRegister />} />
+          <Route path="/adminlogin" element={<AdminLogin />} />
         </Routes>
       </div>
     </BrowserRouter>
